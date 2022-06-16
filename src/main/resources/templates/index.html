@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employees on Projects</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<section class="my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h2>Upload File Example</h2>
+                <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+                <table th:if="${employees ne null}">
+                    <tr>
+                        <th>Employee ID #1</th>
+                        <th>Employee ID #1</th>
+                        <th>Project ID</th>
+                        <th>Days worked</th>
+                    </tr>
+                    <tr th:each="employee: ${employees}">
+                        <td th:text="${employee.employee1Id}"></td>
+                        <td th:text="${employee.employee2Id}"></td>
+                        <td th:text="${employee.ProjectId}"></td>
+                        <td th:text="${employee.daysWorkedTogether}"></td>
+                    </tr>
+                </table>
+                <form method="post" th:action="@{/upload}" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="file" name="file" class="form-control-file">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload File</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
